@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Dự Án</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
+    @import url(http://weloveiconfonts.com/api/?family=entypo);
+    /* entypo */
+    [class*="entypo-"]:before {
+        font-family: 'entypo', sans-serif;
+    }
+    * { 
+	 box-sizing: border-box;
+    }
+    body {
+	 background: #f5f5f5;
+	 max-width: 1200px;
+	 margin: 0 auto;
+	 padding: 10px;
+	 font-family: 'Lato', sans-serif;
+	 text-shadow: 0 0 1px rgba(255, 255, 255, 0.004);
+	 font-size: 100%;
+	 font-weight: 400;
+    }
+    .toggler {
+        color: #a1a1a4;
+        font-size: 1.25em;
+        margin-left: 8px;
+        text-align: center;
+        cursor: pointer;
+    }
+    .toggler.active {
+        color: #000;
+    }
+    .surveys {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    .survey-item {
+        display: block;
+        margin-top: 10px;
+        padding: 20px;
+        border-radius: 2px;
+        background: white;
+        box-shadow: 0 2px 1px rgba(170, 170, 170, 0.25);
+    }
+    .survey-name {
+        font-weight: 400;
+    }
+    .list .survey-item {
+        position: relative;
+        padding: 0;
+        font-size: 14px;
+        line-height: 40px;
+    }
+    .list .survey-item .pull-right {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    @media screen and (max-width: 800px) {
+        .list .survey-item .stage:not(.active) {
+            display: none;
+        }
+    }
+    @media screen and (max-width: 700px) {
+        .list .survey-item .survey-progress-bg {
+            display: none;
+        }
+    }
+    @media screen and (max-width: 600px) {
+        .list .survey-item .pull-right {
+            position: static;
+            line-height: 20px;
+            padding-bottom: 10px;
+        }
+    }
+    .list .survey-country, .list .survey-progress, .list .survey-completes, .list .survey-end-date {
+        color: #a1a1a4;
+    }
+    .list .survey-country, .list .survey-completes, .list .survey-end-date, .list .survey-name, .list .survey-stage {
+        margin: 0 10px;
+    }
+    .list .survey-country {
+        margin-right: 0;
+    }
+    .list .survey-end-date, .list .survey-completes, .list .survey-country, .list .survey-name {
+        vertical-align: middle;
+    }
+    .list .survey-end-date {
+        display: inline-block;
+        width: 100px;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+    .survey-stage .stage {
+        display: inline-block;
+        vertical-align: middle;
+        width: 16px;
+        height: 16px;
+        overflow: hidden;
+        border-radius: 50%;
+        padding: 0;
+        margin: 0 2px;
+        background: #f2f2f2;
+        text-indent: -9999px;
+        color: transparent;
+        line-height: 16px;
+    }
+    .survey-stage .stage.active {
+        background: #a1a1a4;
+    }
+    .list .list-only {
+        display: auto;
+    }
+    .list .grid-only {
+        display: none !important;
+    }
+    .grid .grid-only {
+        display: auto;
+    }
+    .grid .list-only {
+        display: none !important;
+    }
+    .grid .survey-item {
+        position: relative;
+        display: inline-block;
+        vertical-align: top;
+        height: 200px;
+        width: 250px;
+        margin: 10px;
+    }
+    @media screen and (max-width: 600px) {
+        .grid .survey-item {
+            display: block;
+            width: auto;
+            height: 150px;
+            margin: 10px auto;
+        }
+    }
+    .grid .survey-name {
+        display: block;
+        max-width: 80%;
+        font-size: 16px;
+        line-height: 20px;
+    }
+    .grid .survey-country {
+        font-size: 11px;
+        line-height: 16px;
+        text-transform: uppercase;
+    }
+    .grid .survey-country, .grid .survey-end-date {
+        color: #a1a1a4;
+    }
+    .grid .survey-end-date:before {
+        content: 'Ends\00a0';
+    }
+    .grid .survey-end-date.ended:before {
+        content: 'Ended\00a0';
+    }
+    .grid .survey-progress {
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        padding: 20px;
+        border-top: 1px solid #eee;
+        font-size: 13px;
+    }
+    .grid .survey-progress-bg {
+        width: 40%;
+        display: block;
+    }
+    @media screen and (max-width: 200px) {
+        .grid .survey-progress-bg {
+            display: none;
+        }
+    }
+    .grid .survey-progress-labels {
+        position: absolute;
+        right: 20px;
+        top: 0;
+        line-height: 40px;
+    }
+    @media screen and (max-width: 200px) {
+        .grid .survey-progress-labels {
+            right: auto;
+            left: 10px;
+        }
+    }
+    .grid .survey-progress-label {
+        line-height: 21px;
+        font-size: 13px;
+        font-weight: 400;
+    }
+    .grid .survey-completes {
+        line-height: 21px;
+        font-size: 13px;
+        vertical-align: middle;
+    }
+    .grid .survey-stage {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
+    .grid .survey-stage .stage {
+        display: none;
+    }
+    .grid .survey-stage .active {
+        display: block;
+    }
+    .grid .survey-end-date {
+        font-size: 12px;
+        line-height: 20px;
+    }
+    .survey-progress-label {
+        vertical-align: middle;
+        margin: 0 10px;
+        color: #8dc63f;
+    }
+    .survey-progress-bg {
+        display: inline-block;
+        vertical-align: middle;
+        position: relative;
+        width: 100px;
+        height: 4px;
+        border-radius: 2px;
+        overflow: hidden;
+        background: #eee;
+    }
+    .survey-progress-fg {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        height: 100%;
+        left: 0;
+        margin: 0;
+        background: #8dc63f;
+    }
+    
+    </style>
+</head>
+
+<body>
+
+    <div class="container-xxl position-relative bg-white d-flex p-0">
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+
+        <!-- Sidebar Start -->
+        <div class="sidebar pe-4 pb-3">
+            <nav class="navbar bg-light navbar-light">
+                <a href="index.html" class="navbar-brand mx-4 mb-3">
+                    <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>DASHMIN</h3>
+                </a>
+                <div class="d-flex align-items-center ms-4 mb-4">
+                    <div class="position-relative">
+                        <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                        <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
+                    </div>
+                    <div class="ms-3">
+                        <h6 class="mb-0">Jhon Doe</h6>
+                        <span>Admin</span>
+                    </div>
+                </div>
+                <div class="navbar-nav w-100">
+                    <a href="index.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dự Án</a>
+                    <!-- <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Dự Án</a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                            <a href="button.html" class="dropdown-item">D</a>
+                            <a href="typography.html" class="dropdown-item">Nguồn lực</a>
+                            <a href="element.html" class="dropdown-item">Công Việc</a>
+                        </div>
+                    </div> -->
+                    <a href="" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Ngân Sách</a>
+                    <a href="" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Thời Gian</a>
+                    <a href="employee.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Đội Ngũ</a>
+                    <a href="" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Thiết Bị</a>
+                    <a href="" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Quản Lý Rủi Ro</a>
+                    <a href="" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Môi Trường và <br> An Toàn Lao Động</a>
+                </div>
+            </nav>
+        </div>
+        <!-- Sidebar End -->
+
+
+        <!-- Content Start -->
+        <div class="content">
+            <!-- Navbar Start -->
+            <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
+                <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
+                    <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
+                </a>
+                <a href="#" class="sidebar-toggler flex-shrink-0">
+                    <i class="fa fa-bars"></i>
+                </a>
+                <form class="d-none d-md-flex ms-4">
+                    <input class="form-control border-0" type="search" placeholder="Search">
+                </form>
+                <div class="navbar-nav align-items-center ms-auto">
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <i class="fa fa-bell me-lg-2"></i>
+                            <span class="d-none d-lg-inline-flex">Thông báo</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+                            <a href="#" class="dropdown-item">
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                                    <div class="ms-2">
+                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                </div>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                                    <div class="ms-2">
+                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                </div>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                                    <div class="ms-2">
+                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                </div>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item text-center">See all message</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <!-- <i class="fa fa-bell me-lg-2"></i> -->
+                            <i class="fa-solid fa-building-shield"></i>
+                            <span class="d-none d-lg-inline-flex me-lg-2 ">Công Trường</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+                            <a href="#" class="dropdown-item">
+                                <h6 class="fw-normal mb-0">Nhận vật liệu xây dựng</h6>
+                                <small>15 phút trước</small>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <h6 class="fw-normal mb-0">Nhận vật tư</h6>
+                                <small>20 phút trước</small>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <h6 class="fw-normal mb-0">Chấm Công</h6>
+                                <small>7h:30p</small>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item text-center">See all notifications</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                            <span class="d-none d-lg-inline-flex">Nguyễn Hoàng Đức</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+                            <a href="#" class="dropdown-item">Tài Khoảng của tôi</a>
+                            <a href="#" class="dropdown-item">Cài đặt</a>
+                            <a href="#" class="dropdown-item">Đăng xuất</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            
+            <!-- Navbar End -->
+
+                <span class="toggler active" data-toggle="grid"><span class="entypo-layout"></span></span>
+                <span class="toggler" data-toggle="list"><span class="entypo-list"></span></span>
+
+                <ul class="surveys grid">
+                <li class="survey-item">
+                    
+                    <span class="survey-name">
+                    Lập kế hoạch và thiết kế
+                    </span>
+                    
+                    <span class="survey-country grid-only">
+                    dự án : nhà dân D01
+                    </span>
+                    
+                    <div class="pull-right">
+                    
+                    <span class="survey-progress">
+                        <span class="survey-progress-bg">
+                        <span class="survey-progress-fg" style="width: 88%;"></span>
+                        </span>
+                        
+                        <span class="survey-progress-labels">
+                        <span class="survey-progress-label">
+                            88%
+                        </span>
+
+                        <span class="survey-completes">
+                            8 / 10
+                        </span>
+                        </span>
+                    </span>
+                    
+                    <span class="survey-end-date ended">
+                        thời gian : 20/11/2022
+                    </span>
+                    </div>
+                </li>
+                <li class="survey-item">
+                    
+                    <span class="survey-name">
+                    Tiến độ công trường
+                    </span>
+                    
+                    <span class="survey-country grid-only">
+                    dự án : nhà dân D01
+                    </span>
+                    
+                    <div class="pull-right">
+                    
+                    <span class="survey-progress">
+                        <span class="survey-progress-bg">
+                        <span class="survey-progress-fg" style="width: 88%;"></span>
+                        </span>
+                        
+                        <span class="survey-progress-labels">
+                        <span class="survey-progress-label">
+                            88%
+                        </span>
+
+                        <span class="survey-completes">
+                            8 / 10
+                        </span>
+                        </span>
+                    </span>
+                    
+                    <span class="survey-end-date ended">
+                        thời gian : 20/11/2022
+                    </span>
+                    </div>
+                </li>
+                <li class="survey-item">    
+                    <span class="survey-country list-only">
+                    US
+                    </span>
+                    
+                    <span class="survey-name">
+                    Pepsi Tracker New Orleans
+                    </span>
+                    
+                    <span class="survey-country grid-only">
+                    US
+                    </span>
+                    
+                    <div class="pull-right">
+                    
+                    <span class="survey-progress">
+                        <span class="survey-progress-bg">
+                        <span class="survey-progress-fg" style="width: 25%;"></span>
+                        </span>
+                        
+                        <span class="survey-progress-labels">
+                        <span class="survey-progress-label">
+                            25%
+                        </span>
+
+                        <span class="survey-completes">
+                            150 / 500
+                        </span>
+                        </span>
+                    </span>
+                    
+                    <span class="survey-end-date">
+                        2014 - July 12
+                    </span>
+                    <span class="survey-stage">
+                        <span class="stage draft">Draft</span>
+                        <span class="stage awarded">Awarded</span>
+                        <span class="stage live active">Live</span>
+                        <span class="stage ended">Ended</span>        
+                    </span>
+                    </div>
+                </li>
+                <li class="survey-item">
+                    <span class="survey-country list-only">
+                    US
+                    </span>
+                    
+                    <span class="survey-name">
+                    Global Music Brand Tracker
+                    </span>
+                    
+                    <span class="survey-country grid-only">
+                    US
+                    </span>
+                    
+                    <div class="pull-right">
+                    <span class="survey-end-date">
+                        2014 - Oct 1
+                    </span>
+                    <span class="survey-stage">
+                        <span class="stage draft">Draft</span>
+                        <span class="stage awarded active">Awarded</span>
+                        <span class="stage live">Live</span>
+                        <span class="stage ended">Ended</span>        
+                    </span>
+                    </div>
+                </li>
+                </ul>  
+
+
+
+           
+            <!-- Widgets End -->
+
+
+            <!-- Footer Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-light rounded-top p-4">
+                    <div class="row">
+                        <div class="col-12 col-sm-6 text-center text-sm-start">
+                            &copy; <a href="#">Your Site Name</a>, All Right Reserved. 
+                        </div>
+                        <div class="col-12 col-sm-6 text-center text-sm-end">
+                            <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                            Designed By <a href="https://htmlcodex.com">HTML Codex</a>
+                        </br>
+                        Distributed By <a class="border-bottom" href="https://themewagon.com" target="_blank">ThemeWagon</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer End -->
+        </div>
+        <!-- Content End -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/chart/chart.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>
